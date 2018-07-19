@@ -1,19 +1,15 @@
 import { IMovie } from './movie.interface';
 
 export class Movie implements IMovie {
-    public movieId: number;
+    public id: number;
     public title: string;
-    public voteAverage: number;
-    public voteCount: number;
+    public vote_average: number;
+    public vote_count: number;
     public popularity: number;
-    public posterPath: string;
-    public backdropPath: string;
-    public adult: boolean;
+    public poster_path: string;  
     public overview: string;
-    public releaseDate: string;
-    public video: boolean;
-    public originalLanguage: string;
-    public originalTitle: string;
-    public comments: string;
-    public watchlistId: number;
+    public release_date: string;   
+    public original_title: string;
+    public Comments: string;
+    
 }

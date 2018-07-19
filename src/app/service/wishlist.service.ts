@@ -18,22 +18,16 @@ export class WishlistService {
     public post(movie: IMovie): Observable<any> {
 
         const movieObj = {
-            MovieId: movie.movieId,
-            MovieName: movie.title,
-            VoteAverage: movie.voteAverage,
-            Title: movie.title,
-            Popularity: movie.popularity,
-            AssociateName: movie.title,
-            PosterPath: movie.posterPath,
-            OriginalLanguage: movie.originalLanguage,
-            OriginalTitle: movie.originalTitle,
-            BackdropPath: movie.backdropPath,
-            Adult: movie.adult,
-            Overview: movie.overview,
-            ReleaseDate: movie.releaseDate,
-            VoteCount: movie.voteCount,
-            Comments: movie.comments,
-            Video: movie.video
+            id: movie.id,
+            title: movie.title,            
+            vote_average: movie.vote_average,           
+            popularity: movie.popularity,           
+            poster_path: movie.poster_path,            
+            original_title: movie.original_title,                    
+            overview: movie.overview,
+            release_date: movie.release_date,
+            vote_count: movie.vote_count          
+            
         };
         const bodyData = JSON.stringify(movieObj);
 
@@ -56,15 +50,14 @@ export class WishlistService {
     }
 
     public put(movie: IMovie): Observable<boolean> {
-        const updatedObject = {
-            Id: movie.watchlistId,
-            MovieId: movie.movieId,
-            Overview: movie.overview,
-            PosterPath: movie.posterPath,
-            ReleaseDate: movie.releaseDate,
-            VoteAverage: movie.voteAverage,
-            VoteCount: movie.voteCount,
-            Comments: movie.comments
+        const updatedObject = {           
+            id: movie.id,
+            overview: movie.overview,
+            poster_path: movie.poster_path,
+            release_date: movie.release_date,
+            vote_average: movie.vote_average,
+            vote_count: movie.vote_count,
+            comments: movie.Comments
         };
 
         const bodyData = JSON.stringify(updatedObject);
@@ -74,7 +67,7 @@ export class WishlistService {
             })
         };
 
-        return this.http.put(this.url + '/' + movie.watchlistId, bodyData, httpOptions).pipe(
+        return this.http.put(this.url + '/' + movie.id, bodyData, httpOptions).pipe(
             map((response: Response): any => {
                 const status = response.status;
                 if (status === 200) {
@@ -107,16 +100,15 @@ export class WishlistService {
 
     mapWatchlist(data: any): IMovie {
         const response = new Movie();
-        response.movieId = data.movieId;
-        response.watchlistId = data.id;
-        response.comments = data.comments;
+        response.id = data.id;      
+        response.Comments = data.Comments;
         response.overview = data.overview;
-        response.popularity = data.voteCount;
-        response.posterPath = data.posterPath;
-        response.releaseDate = data.releaseDate;
+        response.popularity = data.popularity;
+        response.poster_path = data.poster_path;
+        response.release_date = data.release_date;
         response.title = data.movieName;
-        response.voteAverage = data.voteAverage;
-        response.voteCount = data.voteCount;
+        response.vote_average = data.vote_average;
+        response.vote_count = data.vote_count;
         return response;
     }
 

@@ -1,17 +1,12 @@
 export interface IMovie {
-    movieId: number;
+    id: number;
     title: string;
-    voteAverage: number;
-    voteCount: number;
+    vote_average: number;
+    vote_count: number;
     popularity: number;
-    posterPath: string;
-    backdropPath: string;
-    adult: boolean;
+    poster_path: string;   
     overview: string;
-    releaseDate: string;
-    video: boolean;
-    originalLanguage: string;
-    originalTitle: string;
-    comments: string;
-    watchlistId: number;
+    release_date: string;  
+    original_title: string;
+    Comments: string;   
 }

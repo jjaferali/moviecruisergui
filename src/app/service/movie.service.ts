@@ -13,7 +13,7 @@ export class MovieService {
 
     constructor(private http: HttpClient) {
         // tslint:disable-next-line:max-line-length
-        this.tmdbEndpoint = environment.tmdbUrl + 'movie/popular?page=1&language=en-US&api_key=ddb767b58b3db7929774617e74b4de7c';
+        this.tmdbEndpoint = environment.tmdbUrl + 'movie/popular?page=1&language=en-US&api_key=84e747d123fcfd4d8bbd2792dc5bd306';
     }
 
     get(): Observable<Array<IMovie>> {
@@ -24,7 +24,7 @@ export class MovieService {
     }
 
     getById(movieId: number): Observable<IMovie> {
-        const url = environment.tmdbUrl + 'movie/' + movieId + '?api_key=ddb767b58b3db7929774617e74b4de7c&language=en-US';
+        const url = environment.tmdbUrl + 'movie/' + movieId + '?api_key=84e747d123fcfd4d8bbd2792dc5bd306&language=en-US';
         return this.http.get(url).pipe(
             map((response: any) => {
                 return this.mapMovie(response);
@@ -33,7 +33,7 @@ export class MovieService {
 
     getRecomentedMovies(movieId: number): Observable<Array<IMovie>> {
         const url = environment.tmdbUrl + '/movie/' + movieId +
-            '/recommendations?api_key=ddb767b58b3db7929774617e74b4de7c&language=en-US&page=1';
+            '/recommendations?api_key=84e747d123fcfd4d8bbd2792dc5bd306&language=en-US&page=1';
         return this.http.get(url).pipe(
             map((response: any) => {
                 return this.mapMovies(response.results);
@@ -42,7 +42,7 @@ export class MovieService {
 
     search(term: string): Observable<Array<IMovie>> {
         // tslint:disable-next-line:max-line-length
-        const url = environment.tmdbUrl + 'search/movie?api_key=ddb767b58b3db7929774617e74b4de7c&language=en-US&page=1&include_adult=false&sort_by=popularity.desc&query=' + term;
+        const url = environment.tmdbUrl + 'search/movie?api_key=84e747d123fcfd4d8bbd2792dc5bd306&language=en-US&page=1&include_adult=false&sort_by=popularity.desc&query=' + term;
 
         if (term === '' || term == null || term === undefined) {
             return null;
@@ -65,21 +65,16 @@ export class MovieService {
 
     mapMovie(data: any): IMovie {
         const response = new Movie();
-        response.movieId = data.id;
-        response.watchlistId = data.watchlistId;
-        response.comments = data.comments;
-        response.adult = data.adult;
-        response.backdropPath = data.backdrop_path;
-        response.originalLanguage = data.original_language;
-        response.originalTitle = data.original_title;
+        response.id = data.id;       
+        response.Comments = data.comments;
+        response.original_title = data.original_title;
         response.overview = data.overview;
         response.popularity = data.popularity;
-        response.posterPath = data.poster_path;
-        response.releaseDate = data.release_date;
-        response.title = data.title;
-        response.video = data.video;
-        response.voteAverage = data.vote_average;
-        response.voteCount = data.vote_count;
+        response.poster_path = data.poster_path;
+        response.release_date = data.release_date;
+        response.title = data.title;       
+        response.vote_average = data.vote_average;
+        response.vote_count = data.vote_count;
         return response;
     }
 }

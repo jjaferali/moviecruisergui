@@ -55,7 +55,7 @@ export class AuthService {
         this.loggedIn.next(false);
     }
 
-    public login(userId: string, password: string): Observable<any> {
+    public login(userId: string, password: string): Observable<any> {       
         const body = JSON.stringify({ userId: userId, password: password });
         return this.http.post(this.baseUrl + 'login', body).pipe(
             map((response: Response): Observable<string> => {
@@ -72,7 +72,7 @@ export class AuthService {
 
     public Register(user: User): Observable<any> {
         const body = JSON.stringify(user);
-        return this.http.post(this.baseUrl + 'Register', body).pipe(
+        return this.http.post(this.baseUrl + 'register', body).pipe(
             map((response: any): any => {
                 return 'Registered sucessfully.';
             }),
