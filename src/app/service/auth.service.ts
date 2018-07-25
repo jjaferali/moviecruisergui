@@ -8,6 +8,8 @@ import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from '../model/user';
 import { environment } from '../../environments/environment.prod';
+import { HttpHeaders } from '@angular/common/http';
+import { RequestOptions } from '@angular/http';
 export const TokenName = 'jwt_Token';
 export const UserId = 'userId';
 
@@ -54,11 +56,19 @@ export class AuthService {
         localStorage.removeItem(UserId);
         this.loggedIn.next(false);
     }
+    
+    public login(userId: string, password: string): Observable<any> { 
+     
+       const httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+        })
+    };
 
-    public login(userId: string, password: string): Observable<any> {       
+     
         const body = JSON.stringify({ userId: userId, password: password });
-        return this.http.post(this.baseUrl + 'login', body).pipe(
-            map((response: Response): Observable<string> => {
+        return this.http.post(this.baseUrl + 'login', body,httpOptions).pipe(
+            map((response: any): any => {
                 this.loggedIn.next(true);
                 return response['token'];
             }),
@@ -72,7 +82,12 @@ export class AuthService {
 
     public Register(user: User): Observable<any> {
         const body = JSON.stringify(user);
-        return this.http.post(this.baseUrl + 'register', body).pipe(
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            })
+        };    
+        return this.http.post(this.baseUrl + 'register', body,httpOptions).pipe(
             map((response: any): any => {
                 return 'Registered sucessfully.';
             }),

@@ -12,9 +12,11 @@ export class HeaderComponent implements OnInit {
   isLoggedIn: boolean;
   constructor(private router: Router, private authService: AuthService) { }
 
+  
+  
   ngOnInit() {
     this.searchText = '';
-    this.authService.isLoggedIn.subscribe((response) => {
+     this.authService.isLoggedIn.subscribe((response) => {
       this.isLoggedIn = response;
     });
   }

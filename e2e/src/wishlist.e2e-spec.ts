@@ -5,8 +5,8 @@ describe('Wish List', () => {
 
     beforeEach(() => {
         CommonPage.navigateToLogin();
-        CommonPage.sendKeys('username', 'raji');
-        CommonPage.sendKeys('password', '123456');
+        CommonPage.sendKeys('userName', 'jaferali');
+        CommonPage.sendKeys('password', '123');
 
         CommonPage.buttonClick('btnLogin').then(() => {
             expect(CommonPage.getText('title')).toEqual('Popular Movies');

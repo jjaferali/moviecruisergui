@@ -34,11 +34,11 @@ describe('MovieListComponent', () => {
         component = fixture.componentInstance;
     });
 
-    it('should create', () => {
+    it('should Create', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should navigate to movies', () => {
+    it('should Navigate to movies', () => {
         // Act
         component.NavigateToMovieDetails(1);
 

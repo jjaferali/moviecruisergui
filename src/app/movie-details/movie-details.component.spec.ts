@@ -41,11 +41,11 @@ describe('MovieDetailsComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('should create', () => {
+  it('should Create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should navigate to movies', () => {
+  it('should Navigate to movies', () => {
     // Act
     component.NavigateToMovieDetails(1);
 
@@ -53,7 +53,7 @@ describe('MovieDetailsComponent', () => {
     expect(router.navigate).toHaveBeenCalled();
   });
 
-  it('should call post method', () => {
+  it('should Call to Post method', () => {
     // Arrange
     const movie = new Movie();
 

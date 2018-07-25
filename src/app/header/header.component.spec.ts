@@ -37,7 +37,7 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call router navigate', () => {
+  it('should call router to navigate', () => {
     // Act
     component.onSearch();
 
