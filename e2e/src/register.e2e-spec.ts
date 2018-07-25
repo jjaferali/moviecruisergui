@@ -9,10 +9,10 @@ describe('Register', () => {
         expect(CommonPage.getText('title')).toEqual('Register');
 
         const userId = new Date().valueOf();
-        CommonPage.sendKeys('firstName', 'jaferali');
-        CommonPage.sendKeys('lastName', 'J');
+        CommonPage.sendKeys('firstName', 'jafer');
+        CommonPage.sendKeys('lastName', 'ali');
         CommonPage.sendKeys('userId', userId.toString());
-        CommonPage.sendKeys('password', '123');
+        CommonPage.sendKeys('password', '1234567');
 
         CommonPage.buttonClick('btnRegister').then(() => {
              browser.wait(protractor.ExpectedConditions.alertIsPresent(), 1000);
