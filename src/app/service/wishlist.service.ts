@@ -26,7 +26,8 @@ export class WishlistService {
             original_title: movie.original_title,                    
             overview: movie.overview,
             release_date: movie.release_date,
-            vote_count: movie.vote_count          
+            vote_count: movie.vote_count, 
+            comments:movie.comments        
             
         };
         const bodyData = JSON.stringify(movieObj);
@@ -57,7 +58,7 @@ export class WishlistService {
             release_date: movie.release_date,
             vote_average: movie.vote_average,
             vote_count: movie.vote_count,
-            comments: movie.Comments
+            comments: movie.comments
         };
 
         const bodyData = JSON.stringify(updatedObject);
@@ -101,7 +102,7 @@ export class WishlistService {
     mapWatchlist(data: any): IMovie {
         const response = new Movie();
         response.id = data.id;      
-        response.Comments = data.Comments;
+        response.comments = data.comments;
         response.overview = data.overview;
         response.popularity = data.popularity;
         response.poster_path = data.poster_path;

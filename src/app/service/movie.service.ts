@@ -66,7 +66,7 @@ export class MovieService {
     mapMovie(data: any): IMovie {
         const response = new Movie();
         response.id = data.id;       
-        response.Comments = data.comments;
+        response.comments = data.comments;
         response.original_title = data.original_title;
         response.overview = data.overview;
         response.popularity = data.popularity;

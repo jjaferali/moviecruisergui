@@ -10,6 +10,6 @@ export class Movie implements IMovie {
     public overview: string;
     public release_date: string;   
     public original_title: string;
-    public Comments: string;
+    public comments: string;
     
 }

@@ -61,15 +61,15 @@ export class AuthService {
      
        const httpOptions = {
         headers: new HttpHeaders({
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json'          
         })
     };
-
-     
+   
         const body = JSON.stringify({ userId: userId, password: password });
-        return this.http.post(this.baseUrl + 'login', body,httpOptions).pipe(
+        return this.http.post(this.baseUrl + 'login', body).pipe(
             map((response: any): any => {
                 this.loggedIn.next(true);
+                console.log(response.json);
                 return response['token'];
             }),
             catchError((error: any): any => {
@@ -82,12 +82,8 @@ export class AuthService {
 
     public Register(user: User): Observable<any> {
         const body = JSON.stringify(user);
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json'
-            })
-        };    
-        return this.http.post(this.baseUrl + 'register', body,httpOptions).pipe(
+          
+        return this.http.post(this.baseUrl + 'register', body).pipe(
             map((response: any): any => {
                 return 'Registered sucessfully.';
             }),

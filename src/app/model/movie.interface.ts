@@ -8,5 +8,5 @@ export interface IMovie {
     overview: string;
     release_date: string;  
     original_title: string;
-    Comments: string;   
+    comments: string;   
 }
