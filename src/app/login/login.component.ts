@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.loading = true;
       this.authService.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value).subscribe(result => {
-        if (result === 404) {
+        if (result === 500) {
           this.error = 'UserName or password incorrect';
           this.loading = false;
         }

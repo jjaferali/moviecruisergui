@@ -13,6 +13,7 @@ import { RequestOptions } from '@angular/http';
 export const TokenName = 'jwt_Token';
 export const UserId = 'userId';
 
+
 @Injectable()
 export class AuthService {
     baseUrl = environment.authUrl;
@@ -61,19 +62,20 @@ export class AuthService {
      
        const httpOptions = {
         headers: new HttpHeaders({
-            'Content-Type': 'application/json'          
+            'Content-Type': 'application/json'
+             
         })
+
     };
    
         const body = JSON.stringify({ userId: userId, password: password });
         return this.http.post(this.baseUrl + 'login', body).pipe(
             map((response: any): any => {
-                this.loggedIn.next(true);
-                console.log(response.json);
-                return response['token'];
+                this.loggedIn.next(true);                         
+                return response;
             }),
             catchError((error: any): any => {
-                if (error.status === 404) {
+                if (error.status === 500) {
                     return of(error.status);
                 }
             })
@@ -90,6 +92,9 @@ export class AuthService {
             catchError((error: any): any => {
                 if (error.status === 409) {
                     return of('Already Registered.');
+                }
+                if (error.status === 201) {
+                    return of('Registered sucessfully.');
                 }
             })
         );
